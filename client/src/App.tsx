@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import axios from 'axios'
 import Login from './components/Login'
 
-const API_URL = 'http://localhost:5000'
+const API_URL: string = 'http://localhost:5000'
 
-function App() {
+const App: React.FC = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
   const [accessToken, setAccessToken] = useState('')
@@ -28,6 +28,7 @@ function App() {
       setMessage(data)
     } catch (error) {
       setErrorMessage(`${error.response.status}: ${error.response.statusText}`)
+      throw new Error(error.response.statusText)
     }
   }
 
@@ -35,7 +36,9 @@ function App() {
     <div className="App">
       <Login setToken={setAccessToken} />
       <button onClick={getPublicMessageHandler}>Public Profile</button>
-      <button onClick={getPrivateMessageHandler}>Private Profile</button>
+      {accessToken && (
+        <button onClick={getPrivateMessageHandler}>Private Profile</button>
+      )}
       <div>{errorMessage ? errorMessage : message}</div>
     </div>
   )
