@@ -41,10 +41,10 @@ const App: React.FC = () => {
 
   return (
     <div className="App max-w-5xl mx-auto my-0 flex justify-center">
-      <div className="w-1/4">
+      <div className="w-1/4 p-4">
         {!isShown && (
           <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-4 mt-0"
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
             onClick={toggleLoginHandler}
           >
             Log In
@@ -58,16 +58,16 @@ const App: React.FC = () => {
           />
         )}
       </div>
-      <div className="w-1/4">
+      <div className="w-1/4 p-4">
         <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-4 mt-0"
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
           onClick={getPublicMessageHandler}
         >
           Public Profile
         </button>
         {accessToken && (
           <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-4 mt-0"
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
             onClick={getPrivateMessageHandler}
           >
             Private Profile

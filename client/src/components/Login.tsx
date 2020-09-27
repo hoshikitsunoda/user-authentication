@@ -60,9 +60,9 @@ const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
     <form>
       {!token && (
         <>
-          <div>
+          <div className="mb-4">
             <input
-              className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal m-4"
+              className="bg-white w-full focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
               type="text"
               name="username"
               value={userInfo.username}
@@ -71,9 +71,9 @@ const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
               onChange={usernameInputHandler}
             />
           </div>
-          <div>
+          <div className="my-4">
             <input
-              className="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal m-4"
+              className="bg-white w-full focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block appearance-none leading-normal"
               type="password"
               name="password"
               autoComplete="current-password"
@@ -85,21 +85,23 @@ const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
           <p>{errorMessage}</p>
         </>
       )}
-      <button
-        type="submit"
-        onClick={token ? logoutHandler : viewProfileHandler}
-        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-4 mt-0"
-      >
-        {token ? 'Log Out' : 'Log In'}
-      </button>
-      {!token ? (
+      <div className="flex justify-between">
         <button
-          onClick={toggleLogin}
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded m-4 mt-0"
+          type="submit"
+          onClick={token ? logoutHandler : viewProfileHandler}
+          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
         >
-          Cancel
+          {token ? 'Log Out' : 'Log In'}
         </button>
-      ) : null}
+        {!token ? (
+          <button
+            onClick={toggleLogin}
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
+          >
+            Cancel
+          </button>
+        ) : null}
+      </div>
     </form>
   )
 }
