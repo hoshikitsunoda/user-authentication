@@ -40,18 +40,22 @@ const App: React.FC = () => {
     setIsShown((prevState) => !prevState)
   }
 
+  const logOutHandler = () => {
+    setAccessToken('')
+    setIsShown((prevState) => !prevState)
+    setMessage('Click button to show content')
+  }
+
   return (
-    <div className="App max-w-3xl mx-auto my-0 flex justify-center flex-col">
+    <div className="App max-w-3xl mx-auto my-0 flex justify-center flex-col items-center">
       <div className="w-full p-4 flex justify-end">
-        {!isShown && (
-          <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
-            onClick={toggleLoginHandler}
-          >
-            Log In
-          </button>
-        )}
-        {isShown && (
+        <button
+          className="btn mx-2"
+          onClick={accessToken ? logOutHandler : toggleLoginHandler}
+        >
+          {accessToken ? 'Log Out' : 'Log In'}
+        </button>
+        {isShown && !accessToken && (
           <Login
             setToken={setAccessToken}
             token={accessToken}
@@ -62,17 +66,11 @@ const App: React.FC = () => {
       </div>
       <div className="w-full px-8 py-4 flex flex-col justify-between items-center mx-4">
         <div>
-          <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2"
-            onClick={getPublicMessageHandler}
-          >
+          <button className="btn mx-2" onClick={getPublicMessageHandler}>
             Show Public Content
           </button>
           {accessToken && (
-            <button
-              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2"
-              onClick={getPrivateMessageHandler}
-            >
+            <button className="btn mx-2" onClick={getPrivateMessageHandler}>
               Show Private Content
             </button>
           )}
