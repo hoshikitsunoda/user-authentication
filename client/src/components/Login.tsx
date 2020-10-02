@@ -75,7 +75,7 @@ const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
                 ref={inputEl}
               />
             </div>
-            <p>{errorMessage}</p>
+            <p className="mb-4 text-red-500">{errorMessage}</p>
           </>
         )}
         <div className="flex justify-between">

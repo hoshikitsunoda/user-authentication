@@ -8,7 +8,7 @@ interface IProp {
 
 const Profile: React.FC<IProp> = ({ message, errorMessage }) => {
   return (
-    <div className="p-6 m-4 shadow rounded">
+    <div className="p-6 m-4 shadow rounded text-center">
       <p>{errorMessage ? errorMessage : message}</p>
     </div>
   )
