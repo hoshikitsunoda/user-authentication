@@ -13,6 +13,7 @@ interface IProps {
   setToken: Dispatch<SetStateAction<string>>
   token: string
   toggleLogin: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  setMessage: Dispatch<SetStateAction<string>>
 }
 
 interface IState {
@@ -20,7 +21,12 @@ interface IState {
   password?: string
 }
 
-const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
+const Login: React.FC<IProps> = ({
+  setToken,
+  token,
+  toggleLogin,
+  setMessage,
+}) => {
   const initialState = {
     username: '',
     password: '',
@@ -54,6 +60,7 @@ const Login: React.FC<IProps> = ({ setToken, token, toggleLogin }) => {
     setToken('')
     setUserInfo({ ...userInfo, password: '' })
     setErrorMessage('')
+    setMessage('')
   }
 
   return (

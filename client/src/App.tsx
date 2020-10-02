@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Login from './components/Login'
+import Profile from './components/Profile'
 
 const API_URL: string = 'http://localhost:5000'
 
@@ -55,6 +56,7 @@ const App: React.FC = () => {
             setToken={setAccessToken}
             token={accessToken}
             toggleLogin={toggleLoginHandler}
+            setMessage={setMessage}
           />
         )}
       </div>
@@ -63,17 +65,21 @@ const App: React.FC = () => {
           className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
           onClick={getPublicMessageHandler}
         >
-          Public Profile
+          Show Public Content
         </button>
         {accessToken && (
           <button
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
             onClick={getPrivateMessageHandler}
           >
-            Private Profile
+            Show Private Content
           </button>
         )}
-        <div>{errorMessage ? errorMessage : message}</div>
+        <Profile
+          token={accessToken}
+          message={message}
+          errorMessage={errorMessage}
+        />
       </div>
     </div>
   )
