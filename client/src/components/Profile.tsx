@@ -7,7 +7,11 @@ interface IProp {
 }
 
 const Profile: React.FC<IProp> = ({ message, errorMessage }) => {
-  return <div>{errorMessage ? errorMessage : message}</div>
+  return (
+    <div className="p-6 m-4 shadow rounded">
+      <p>{errorMessage ? errorMessage : message}</p>
+    </div>
+  )
 }
 
 export default Profile

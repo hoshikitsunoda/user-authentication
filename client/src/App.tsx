@@ -6,7 +6,7 @@ import Profile from './components/Profile'
 const API_URL: string = 'http://localhost:5000'
 
 const App: React.FC = () => {
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState('Click button to show content')
   const [errorMessage, setErrorMessage] = useState('')
   const [accessToken, setAccessToken] = useState('')
   const [isShown, setIsShown] = useState(false)
@@ -41,8 +41,8 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="App max-w-5xl mx-auto my-0 flex justify-center">
-      <div className="w-1/4 p-4">
+    <div className="App max-w-3xl mx-auto my-0 flex justify-center flex-col">
+      <div className="w-full p-4 flex justify-end">
         {!isShown && (
           <button
             className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
@@ -60,21 +60,23 @@ const App: React.FC = () => {
           />
         )}
       </div>
-      <div className="w-1/4 p-4">
-        <button
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
-          onClick={getPublicMessageHandler}
-        >
-          Show Public Content
-        </button>
-        {accessToken && (
+      <div className="w-full px-8 py-4 flex flex-col justify-between items-center mx-4">
+        <div>
           <button
-            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mb-4"
-            onClick={getPrivateMessageHandler}
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2"
+            onClick={getPublicMessageHandler}
           >
-            Show Private Content
+            Show Public Content
           </button>
-        )}
+          {accessToken && (
+            <button
+              className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mx-2"
+              onClick={getPrivateMessageHandler}
+            >
+              Show Private Content
+            </button>
+          )}
+        </div>
         <Profile
           token={accessToken}
           message={message}

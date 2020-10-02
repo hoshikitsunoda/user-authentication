@@ -60,7 +60,7 @@ const Login: React.FC<IProps> = ({
     setToken('')
     setUserInfo({ ...userInfo, password: '' })
     setErrorMessage('')
-    setMessage('')
+    setMessage('Click button to show content')
   }
 
   return (
