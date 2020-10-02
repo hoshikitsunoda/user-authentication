@@ -18,11 +18,11 @@ const jwtCheck = expressjwt({
 })
 
 app.get('/user', (_, res: Response) => {
-  res.status(200).send(`Public user info`)
+  res.status(200).send(`Anyone can see this`)
 })
 
 app.get('/user/loggedin', jwtCheck, (_, res: Response) => {
-  res.status(200).send(`Logged in user page`)
+  res.status(200).send(`Only the logged in users can see this message`)
 })
 
 app.get('*', (_, res: Response) => res.sendStatus(404))
